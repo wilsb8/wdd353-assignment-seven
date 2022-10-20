@@ -20,6 +20,14 @@ app.use((req, res, next) => {
     next();
 });
 
+//EJS Middleware
+app.set('view engine', 'ejs');
+app.engine('ejs', require('ejs').__express);
+
+//Static site middleware
+app.use(express.static('public'));
+app.use(express.static('views'));
+
 // error handling bad urls
 app.use((req, res, next) => {
     const error = new Error('Not found!!!');
