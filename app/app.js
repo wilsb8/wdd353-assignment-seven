@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const router = require("../api/routes/routes");
+const ejs = require('ejs');
 const app = express();
 require('dotenv').config();
 

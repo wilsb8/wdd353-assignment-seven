@@ -1,16 +1,46 @@
 const express = require("express");
 const router = express.Router();
 const postLogin = require('../../db/db');
+const postRegistration = require('../../db/db')
 
-router.get("/", () => {
-  res.status(200).json({
-    message: "Server is up.",
-    method: req.method,
+router.get("/", (req, res) => {
+  res.render("home", {
+    pagename: "Home",
   });
 });
 
-router.post("/registration", (req, res) => {
-  postLogin(req).then(result => {
+router.get("/about", (req, res) => {
+  res.render("about", {
+    pagename: "About",
+  });
+});
+
+router.get("/contact", (req, res) => {
+  res.render("contact", {
+    pagename: "Contact",
+  });
+});
+
+router.get("/services", (req, res) => {
+  res.render("services", {
+    pagename: "Services",
+  });
+});
+
+router.get("/login", (req, res) => {
+  res.render("login", {
+    pagename: "Login",
+  });
+});
+
+router.get("/register", (req, res) => {
+  res.render("register", {
+    pagename: "Registration",
+  });
+});
+
+router.post("/register", (req, res) => {
+  postRegistration(req).then(result => {
     console.log(result);
     res.status(200).json({
       message: "Registration saved.",
